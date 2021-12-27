@@ -19,7 +19,7 @@ int main(){
 
   dm.attachShape(&square);
 
-  while(WindowShouldClose())
+  while(!WindowShouldClose())
     dm.drawShape();
 
   dm.closeScreen();
