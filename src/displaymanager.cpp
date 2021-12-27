@@ -1,4 +1,4 @@
-#include "display.hpp"
+#include "displaymanager.hpp"
 #include <raylib.h>
 
 DisplayManager::DisplayManager(
@@ -14,6 +14,8 @@ DisplayManager::DisplayManager(
   this->profile = profile;
   this->screenWidth = screenWidth;
   this->screenHeight = screenHeight;
+
+  switchProfile(profile);
 }
 
 void DisplayManager::switchProfile(std::string profile){
@@ -39,8 +41,11 @@ void DisplayManager::removeShape(Object* shape){
 }
 
 void DisplayManager::drawShape() const{
+  BeginDrawing();
+  ClearBackground(RAYWHITE);
   for (Object* i : *profileRef)
     i->draw();
+  EndDrawing();
 }
 
 void DisplayManager::closeScreen() const{
